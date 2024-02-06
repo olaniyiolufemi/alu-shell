@@ -1,1 +1,1 @@
-second reposiroty and readme file
+alu-shell task from ALU
