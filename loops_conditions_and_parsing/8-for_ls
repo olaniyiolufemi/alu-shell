@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script displays the directory content in a list format with modified names.
+
+# Use a for loop to iterate through non-hidden files and directories
+for item in *; do
+    # Check if the item is a file or directory (not a hidden file)
+    if [ -e "$item" ] && [ "${item:0:1}" != "." ]; then
+        # Use cut to remove everything before the first dash
+        modified_name=$(echo "$item" | cut -d '-' -f 2-)
+        echo "$modified_name"
+    fi
+done

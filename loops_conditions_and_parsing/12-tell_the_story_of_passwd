@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script tells a story based on the content of the /etc/passwd file.
+
+# Set the input field separator to ":"
+IFS=":"
+
+# Read each line from the "/etc/passwd" file and process it
+while IFS=: read -r username password uid gid gecos home shell; do
+    # Skip lines starting with a #
+    if [[ $username == \#* ]]; then
+        continue
+    fi
+    
+    # Display the story based on the extracted user information
+    echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode $password, more info about the user here: $gecos"
+done < /etc/passwd

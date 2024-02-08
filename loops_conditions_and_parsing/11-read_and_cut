@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script displays the username, user ID, and home directory for each user in /etc/passwd.
+
+# Set the input field separator to ":"
+IFS=":"
+
+# Read each line from the "/etc/passwd" file and process it
+while read -r username _ uid _ _ home _; do
+    # Skip lines starting with a #
+    if [[ $username == \#* ]]; then
+        continue
+    fi
+    
+    # Display username, user ID, and home directory
+    echo "$username:$uid:$home"
+done < /etc/passwd
